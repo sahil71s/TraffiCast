@@ -5,122 +5,112 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS ----------------
+# ================= CSS =================
 
 st.markdown("""
 <style>
 
+.stApp{
+background:
+radial-gradient(circle at 20% 20%, rgba(59,130,246,0.15), transparent 30%),
+radial-gradient(circle at 80% 70%, rgba(37,99,235,0.12), transparent 25%),
+linear-gradient(180deg,#020617,#081225,#0B1630);
+}
+
+/* Grid */
+.stApp::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:
+linear-gradient(rgba(91,140,255,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(91,140,255,0.05) 1px, transparent 1px);
+background-size:40px 40px;
+pointer-events:none;
+z-index:-1;
+}
+
+/* Hide sidebar */
 [data-testid="stSidebar"]{
 display:none;
 }
 
-#MainMenu{
-visibility:hidden;
-}
-
-footer{
-visibility:hidden;
-}
-
-.main{
-background-color:#050816;
-color:white;
-}
-
-.block-container{
-padding-top:1rem;
-max-width:1200px;
-}
-
-.hero{
+/* Title */
+.title{
 text-align:center;
-padding-top:40px;
-padding-bottom:40px;
-}
-
-.hero-title{
-font-size:64px;
+font-size:72px;
 font-weight:700;
 color:white;
+margin-top:20px;
+letter-spacing:2px;
+text-shadow:
+0 0 20px rgba(91,140,255,0.5),
+0 0 40px rgba(91,140,255,0.3);
 }
 
-.hero-subtitle{
+.subtitle{
+text-align:center;
 font-size:22px;
-color:#9ba3b4;
-margin-top:10px;
+color:#94a3b8;
+margin-bottom:40px;
 }
 
+/* Cards */
 .card{
-background:rgba(255,255,255,0.04);
-backdrop-filter: blur(16px);
-border:1px solid rgba(255,255,255,0.08);
-padding:35px;
-border-radius:24px;
-height:260px;
-transition:0.3s;
-}
-
-.card:hover{
-border:1px solid #4f7cff;
-box-shadow:0px 0px 25px rgba(79,124,255,0.4);
+background:rgba(10,20,40,0.75);
+backdrop-filter:blur(20px);
+border:1px solid rgba(91,140,255,0.15);
+border-radius:20px;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 0 20px rgba(59,130,246,0.15);
 }
 
 .card-title{
-font-size:28px;
+font-size:30px;
 font-weight:700;
 color:white;
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
 .card-text{
 font-size:16px;
-line-height:2;
-color:#b7c0d0;
+line-height:1.8;
+color:#cbd5e1;
 }
 
+/* Buttons */
 .stButton>button{
-background:#4f7cff;
-color:white;
-border-radius:12px;
-height:50px;
+height:48px;
+background:linear-gradient(90deg,#2563eb,#3b82f6);
 border:none;
+border-radius:12px;
 font-size:16px;
 font-weight:600;
-}
-
-.stButton>button:hover{
-background:#6b8dff;
 color:white;
 }
 
 </style>
-""",unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
-# ---------------- HERO ----------------
+# ================= HEADER =================
 
 st.markdown("""
-<div class='hero'>
-
-<div class='hero-title'>
+<div class='title'>
 FlowSense AI
 </div>
 
-<div class='hero-subtitle'>
+<div class='subtitle'>
 Event-Driven Congestion Intelligence Platform
 </div>
+""", unsafe_allow_html=True)
 
-</div>
-""",unsafe_allow_html=True)
+# ================= OVERVIEW =================
 
-st.markdown("---")
-
-# ================= ROW 1 =================
-
-col1,col2=st.columns(2)
-
-with col1:
-
-    st.markdown("""
+st.markdown("""
 <div class='card'>
 
 <div class='card-title'>
@@ -129,139 +119,86 @@ Overview
 
 <div class='card-text'>
 
-Historical Traffic Analytics
+Historical analytics and city-wide traffic intelligence.
 
-• Event Trends
+• Event trends
 
-• Peak Hours
+• Peak hours
+
+• Corridor risk analysis
+
+• Event causes
+
+• Duration statistics
 
 </div>
 
 </div>
-""",unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
-    if st.button(
-        "Open Overview",
-        use_container_width=True
-    ):
-        st.switch_page("pages/1_Overview.py")
+if st.button("Open Overview", use_container_width=True):
+    st.switch_page("pages/1_Overview.py")
 
+# ================= OPERATIONS CENTER =================
 
-
-with col2:
-
-    st.markdown("""
+st.markdown("""
 <div class='card'>
 
 <div class='card-title'>
-Real Time Response
+Operations Center
 </div>
 
 <div class='card-text'>
 
-Live Event Operations
+Real-time forecasting and deployment planning.
 
-• Event Inputs
+• Historical intelligence
 
-• Impact Forecast
+• Duration prediction
+
+• Officers recommendation
+
+• Barricades recommendation
+
+• Diversion planning
+
+• Command summary
 
 </div>
 
 </div>
-""",unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
-    if st.button(
-        "Open Real Time Response",
-        use_container_width=True
-    ):
-        st.switch_page("pages/2_Real_Time_Response.py")
+if st.button("Open Operations Center", use_container_width=True):
+    st.switch_page("pages/2_Operations_Center.py")
 
+# ================= POST EVENT LEARNING =================
 
-
-st.write("")
-st.write("")
-
-# ================= ROW 2 =================
-
-col3,col4=st.columns(2)
-
-with col3:
-
-    st.markdown("""
+st.markdown("""
 <div class='card'>
 
 <div class='card-title'>
-Deployment Intelligence
+Post Event Learning
 </div>
 
 <div class='card-text'>
 
-Resource Optimization
+Institutional memory and continuous improvement.
 
-• Officer Allocation
+• Actual outcomes
 
-• Barricade Planning
+• Officer observations
 
-</div>
+• Lessons learned
 
-</div>
-""",unsafe_allow_html=True)
+• Recommendations
 
-    if st.button(
-        "Open Deployment Intelligence",
-        use_container_width=True
-    ):
-        st.switch_page("pages/3_Deployment_Intelligence.py")
-
-
-
-with col4:
-
-    st.markdown("""
-<div class='card'>
-
-<div class='card-title'>
-Past Event Learning
-</div>
-
-<div class='card-text'>
-
-Institutional Memory
-
-• Event Debriefs
-
-• Officer Notes
+• Knowledge repository
 
 </div>
 
 </div>
-""",unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
-    if st.button(
-        "Open Past Event Learning",
-        use_container_width=True
-    ):
-        st.switch_page("pages/4_Event_Learning.py")
-
-
-
-st.write("")
-st.write("")
-st.markdown("---")
-
-st.markdown(
-"""
-<center>
-
-<h4 style='color:white'>
-Predict → Deploy → Learn → Improve
-</h4>
-
-<p style='color:#9ba3b4'>
-Historical Intelligence + Real-Time Response + Institutional Memory
-</p>
-
-</center>
-""",
-unsafe_allow_html=True
-)
+if st.button("Open Post Event Learning", use_container_width=True):
+    st.switch_page("pages/3_Post_Event_Learning.py")
