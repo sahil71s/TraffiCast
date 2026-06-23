@@ -170,9 +170,11 @@ st.write("")
 st.write("")
 st.write("")
 
-left, center, right = st.columns([2.5,2.4,4.1])
+st.markdown("<br>", unsafe_allow_html=True)
 
-with center:
+c1, c2, c3 = st.columns([1.4,1,1.6])
+
+with c2:
     launch = st.button(
         "Launch Platform",
         use_container_width=True
